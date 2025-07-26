@@ -1,0 +1,27 @@
+
+{% load static %}
+<!-- core/templates/login.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Portal</title>
+    <link rel="stylesheet" href="{% static 'core/css/login.css' %}">
+</head>
+<body>
+    <div class="login-box">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- preciso saber sobre essas tags username e password se posso mudar -->
+            <input type="text" name="username" placeholder="Usuário" required>
+            <input type="password" name="password" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="{% static 'core/css/calculadora.css' %}">
+</head>
+<body>
+    
+    <header class="topo">
+        <h1>Calculadora Avançada</h1>
+        <h4>Calculadora com histórico de operações</h4>
+    </header>
+    <main class="conteudo">
+        <div class="container"> 
+            <section class="calculadora">
+                <input type="text" id="display" readonly>
+                <div class="buttons">
+                    <button class="clear">C</button><button>±</button><button>%</button><button>÷</button>
+                    <button>7</button><button>8</button><button>9</button><button>*</button>
+                    <button>4</button><button>5</button><button>6</button><button>-</button>
+                    <button>1</button><button>2</button><button>3</button><button>+</button>
+                    <button class="zero">0</button><button>.</button><button class="igual">=</button>
+                </div>    
+            </section>
+
+            <section class="historico">
+                <form id="form-operacao" method="POST" action="{% url 'salvar_operacao' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="parametros" id="input-parametros">
+                    <input type="hidden" name="resultado" id="input-resultado">
+                </form>
+                <div class="history">
+                    <div class="history-header">
+                        <h3>Histórico</h3>
+                            <button type="submit" class="clear-history" id="cls-historico" title="Limpar histórico">
+                                🗑️  
+                            </button>
+                    </div>
+                    <div id="history-boxes">
+                        {% for operacao in historico %}
+                            <div class="history-box">{{ operacao.parametros }} = {{ operacao.resultado }}</div>
+                        {% empty %}
+                            <p>Sem outro histórico recente.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="{% static 'core/js/calculadora.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+/* static/core/css/login.css */
+/*fundo degrade*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #4B0082, #240a58);
+}
+
+/* caixa branca central */
+.login-box {
+    background-color: rgb(7, 1, 14);
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(84, 6, 209, 0.2);
+    width: 300px;
+    text-align: center;
+}
+/* titulo */
+.login-box h2 {
+    font-stretch: expanded;
+    margin-bottom: 25px;
+    color: #f6f5f7;
+}
+
+
+/* Inputs alinhados verticalmente */
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* o que faz essa transition ease? */
+
+/* Botão */
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15;
+    background-color: #4B0082;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.login-box button:hover {
+    background-color: #5e2ca5;
+}
+
+
+/* Mensagem de erro */
+.error {
+    color: red;
+    margin-top: 10px;
+}
